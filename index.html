@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!--Header-->
+<header class="header" id="myHeader">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+            </div>
+            <div class="cart-icon"></div>
+        </div>
+    </nav>
+</header>
+<!--السله-->
+<div id="cartModal" class="modal">
+        <div class="modal-content">
+
+            <div class="modal-header">               
+                <h3>سلة المشتريات</h3>
+                <span class="close">×</span>                
+            </div>
+
+
+            <div class="modal-body">
+                <div id="cartItems"> <!-- الطلبات في السله --> </div>
+                <div class="cart-total">
+                    <h4>Total: <span id="cartTotal"></span></h4>
+                </div>
+            </div>
+
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="clearCart">إفراغ السلة</button>
+                <button class="btn btn-primary" id="checkout"> اغلاق </button>
+            </div>
+
+
+        </div>
+    </div>
+<!--السله الطائره-->
+<div class="flying-cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+    </div>
+<!-- Menu Section -->
+<section id="menu" class="menu-section">
+    <div class="container">
+
+        <div class="section-header">
+            <h2>Menu</h2>
+        </div>
+
+        <div class="menu-filters"></div>
+        
+        <div class="menu-grid"><!--Dishes--></div>
+
+    </div>
+</section>
+
+    <!--Contact us-->
+<section id="contact" class="contact-section">
+<div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+            </div>
+            
+            <div class="contact-content">
+
+                    <div class="contact-item loading loaded">
+                        <div>
+                            <h3>Phone</h3>
+                            <p id="contact-phone"></p>
+                        </div>
+                        <i class="fas fa-phone"></i>                        
+                    </div>
+                    <div class="contact-item loading loaded">
+                        <div>
+                            <h3>Address</h3>
+                            <p id="contact-address"></p>
+                        </div>
+                        <i class="fas fa-map-marker-alt"></i>                        
+                    </div>
+
+            </div>
+        </div>
+</section>
+
+    <!--Footer-->
+    <footer class="footer">
+
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 id="footer-title"></h3>
+                <div class="social-links">
+                    <a id="footer-facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a id="footer-instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>All rights reserved &copy; 2025 <a href="https://wa.me/201063917513?text=مرحبًا، أود الاستفسار عن خدمات Snape" class="company" target="_blank">&lt;Snape&gt;</a></p>
+        </div>
+
+</footer>
+
+<!-- Scroll on top -->
+
+<!-- مثال الزر مع الدائرة حوله -->
+<button id="scroll-to-top" class="scroll-to-top-btn" aria-label="العودة للأعلى">
+  <svg class="progress-ring" width="48" height="48">
+    <circle class="progress-ring__bg" cx="24" cy="24" r="20" stroke-width="5" fill="none"/>
+    <circle class="progress-ring__circle" cx="24" cy="24" r="20" stroke-width="5" fill="none"/>
+  </svg>
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script src="js/script.js"></script>
+<script src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+</body>
+</html>

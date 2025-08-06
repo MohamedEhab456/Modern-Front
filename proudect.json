@@ -1,0 +1,136 @@
+{
+  "title": "restr",
+  "logo": "/images/imageslogo.png",
+  "sections": [
+    { "key": "drinks", "label": "المشروبات" },
+    { "key": "foods", "label": "ماكولات" },
+    { "key": "desserts", "label": "حلويات" }
+  ],
+  "products": {
+    "drinks": [
+      {
+        "id": 1,
+        "title": "ببسي",
+        "desc": "مشروب صودا",
+        "price": 90,
+        "oldPrice": 120,
+        "image": "images/dish1.jpeg"
+      },
+            {
+        "id": 1,
+        "title": "ببسي",
+        "desc": "مشروب صودا",
+        "price": 90,
+        "image": "images/dish1.jpeg"
+      },
+            {
+        "id": 1,
+        "title": "ببسي",
+        "desc": "مشروب صودا",
+        "price": 90,
+        "image": "images/dish1.jpeg"
+      },
+            {
+        "id": 1,
+        "title": "ببسي",
+        "desc": "مشروب صودا",
+        "price": 90,
+        "image": "images/dish1.jpeg"
+      },
+            {
+        "id": 1,
+        "title": "ببسي",
+        "desc": "مشروب صودا",
+        "price": 90,
+        "image": "images/dish1.jpeg"
+      },
+            {
+        "id": 1,
+        "title": "ببسي",
+        "desc": "مشروب صودا",
+        "price": 90,
+        "oldPrice": 120,
+        "image": "images/dish1.jpeg"
+      }
+    ],
+    "foods": [
+      {
+        "id": 2,
+        "title": "بيتزا",
+        "desc": "بيتزا بالخضار والجبنة",
+        "price": 90,
+        "oldPrice": 120,
+        "image": "images/dish1.jpeg"
+      },
+      {
+        "id": 3,
+        "title": "لاتيه",
+        "desc": "لاتيه بلجبنه",
+        "price": 100,
+        "image": "images/dish1.jpeg"
+      },
+      {
+        "id": 4,
+        "title": "مكرونه",
+        "desc": "مكرونه بالخضار والجبنة",
+        "price": 90,
+        "image": "images/dish1.jpeg"
+      }
+    ],
+
+    "desserts": [
+      {
+        "id": 3,
+        "title": "ايس كريم",
+        "desc": "ايس كريم بالفانيليا",
+        "price": 90,
+        "image": "images/dish1.jpeg"
+      },
+            {
+        "id": 3,
+        "title": "ايس كريم",
+        "desc": "ايس كريم بالفانيليا",
+        "price": 90,
+        "image": "images/dish1.jpeg"
+      },
+            {
+        "id": 3,
+        "title": "ايس كريم",
+        "desc": "ايس كريم بالفانيليا",
+        "price": 90,
+        "image": "images/dish1.jpeg"
+      },
+            {
+        "id": 3,
+        "title": "ايس كريم",
+        "desc": "ايس كريم بالفانيليا",
+        "price": 90,
+        "image": "images/dish1.jpeg"
+      },
+            {
+        "id": 3,
+        "title": "ايس كريم",
+        "desc": "ايس كريم بالفانيليا",
+        "price": 90,
+        "image": "images/dish1.jpeg"
+      },
+            {
+        "id": 3,
+        "title": "ايس كريم",
+        "desc": "ايس كريم بالفانيليا",
+        "price": 90,
+        "image": "images/dish1.jpeg"
+      }
+    ]
+  },
+  "contact": {
+    "phone": "+201063219650",
+    "address": "مدينه نصر, شارع اباظه"
+  },
+  "social": {
+    "facebook": "https://facebook.com/yourpage",
+    "instagram": "https://instagram.com/yourpage"
+  }
+}
+
+
