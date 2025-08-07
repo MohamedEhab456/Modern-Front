@@ -43,16 +43,36 @@ let allSections = [];
 let allProducts = {};
 
 function renderMenuFilters(sections) {
-  let filtersContainer = document.querySelector(".menu-filters");
+  const filtersContainer = document.querySelector(".menu-filters");
   filtersContainer.innerHTML = "";
 
   sections.forEach((section) => {
-    let btn = document.createElement("button");
-    btn.classList = "filter-btn";
+    const btn = document.createElement("button");
+    btn.className = "filter-btn";
     btn.dataset.filter = section.key;
     btn.textContent = section.label;
+
+    // لو القسم عروض أضف كلاس خاص
+    if (section.key === "offers") {
+      btn.classList.add("offers-btn");
+      btn.innerHTML += `<span class="sale-tag">SALE</span>`;
+    }
+
     filtersContainer.appendChild(btn);
   });
+
+  // أضف أو أزل كلاس has-scroll حسب عدد الكاتجوري
+  if (sections.length > 3) {
+    filtersContainer.classList.add("has-scroll");
+  } else {
+    filtersContainer.classList.remove("has-scroll");
+  }
+
+  if (sections.length < 4) {
+    filtersContainer.classList.add("few-categories");
+  } else {
+    filtersContainer.classList.remove("few-categories");
+  }
 }
 
 /* Section Menu Function */
@@ -192,7 +212,7 @@ document.querySelector(".menu-grid").addEventListener("click", function (e) {
     let title = parent.querySelector("h3").textContent;
     let desc = parent.querySelector("p").textContent;
     let price = Number(
-      parent.querySelector(".price-tag").textContent.replace(/[^\d]/g, "")
+      parent.querySelector(".new-price").textContent.replace(/[^\d]/g, "")
     );
     let found = cart.find((item) => item.id == id);
 
@@ -241,10 +261,19 @@ document.getElementById("cartItems").addEventListener("click", function (e) {
 
 document.querySelector(".cart-icon").onclick = () => {
   renderCart();
-  document.getElementById("cartModal").style.display = "block";
+  const modal = document.getElementById("cartModal");
+  const modalContent = modal.querySelector(".modal-content");
+  modal.style.display = "block";
+  // إزالة الكلاسات القديمة أولاً
+  modalContent.classList.remove("animate__animated", "animate__zoomIn");
+  // إعادة تفعيل الأنيميشن (إعادة الرسم)
+  void modalContent.offsetWidth;
+  modalContent.classList.add("animate__animated", "animate__zoomIn");
 };
+
 document.querySelector(".close").onclick = () => {
   document.getElementById("cartModal").style.display = "none";
+  // يمكنك إزالة كلاس الأنيميشن هنا إذا أردت
 };
 
 document.getElementById("clearCart").onclick = () => {
@@ -378,4 +407,8 @@ window.addEventListener("scroll", () => {
 
 scrollBtn.addEventListener("click", function () {
   window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("cartModal").style.display = "none";
 });

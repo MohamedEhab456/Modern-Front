@@ -2,49 +2,18 @@
   "title": "restr",
   "logo": "/images/imageslogo.png",
   "sections": [
+
+
     { "key": "drinks", "label": "المشروبات" },
     { "key": "foods", "label": "ماكولات" },
-    { "key": "desserts", "label": "حلويات" }
+    { "key": "desserts1", "label": "حلويات" },
+    { "key": "desserts1", "label": "حلويات" },
+    { "key": "desserts1", "label": "حلويات" }
+
   ],
   "products": {
     "drinks": [
       {
-        "id": 1,
-        "title": "ببسي",
-        "desc": "مشروب صودا",
-        "price": 90,
-        "oldPrice": 120,
-        "image": "images/dish1.jpeg"
-      },
-            {
-        "id": 1,
-        "title": "ببسي",
-        "desc": "مشروب صودا",
-        "price": 90,
-        "image": "images/dish1.jpeg"
-      },
-            {
-        "id": 1,
-        "title": "ببسي",
-        "desc": "مشروب صودا",
-        "price": 90,
-        "image": "images/dish1.jpeg"
-      },
-            {
-        "id": 1,
-        "title": "ببسي",
-        "desc": "مشروب صودا",
-        "price": 90,
-        "image": "images/dish1.jpeg"
-      },
-            {
-        "id": 1,
-        "title": "ببسي",
-        "desc": "مشروب صودا",
-        "price": 90,
-        "image": "images/dish1.jpeg"
-      },
-            {
         "id": 1,
         "title": "ببسي",
         "desc": "مشروب صودا",
@@ -61,64 +30,50 @@
         "price": 90,
         "oldPrice": 120,
         "image": "images/dish1.jpeg"
-      },
+      }
+    ],
+    "desserts1": [
       {
         "id": 3,
-        "title": "لاتيه",
-        "desc": "لاتيه بلجبنه",
-        "price": 100,
-        "image": "images/dish1.jpeg"
-      },
-      {
-        "id": 4,
-        "title": "مكرونه",
-        "desc": "مكرونه بالخضار والجبنة",
+        "title": "ايس كريم فانيليا",
+        "desc": "ايس كريم بالفانيليا",
         "price": 90,
         "image": "images/dish1.jpeg"
       }
     ],
-
-    "desserts": [
+    "desserts2": [
       {
-        "id": 3,
-        "title": "ايس كريم",
-        "desc": "ايس كريم بالفانيليا",
-        "price": 90,
+        "id": 4,
+        "title": "ايس كريم شوكولاتة",
+        "desc": "ايس كريم بالشوكولاتة",
+        "price": 95,
         "image": "images/dish1.jpeg"
-      },
-            {
-        "id": 3,
-        "title": "ايس كريم",
-        "desc": "ايس كريم بالفانيليا",
-        "price": 90,
+      }
+    ],
+    "desserts3": [
+      {
+        "id": 5,
+        "title": "كيك",
+        "desc": "كيك بالفراولة",
+        "price": 100,
         "image": "images/dish1.jpeg"
-      },
-            {
-        "id": 3,
-        "title": "ايس كريم",
-        "desc": "ايس كريم بالفانيليا",
-        "price": 90,
+      }
+    ],
+        "desserts4": [
+      {
+        "id": 5,
+        "title": "كيك",
+        "desc": "كيك بالفراولة",
+        "price": 100,
         "image": "images/dish1.jpeg"
-      },
-            {
-        "id": 3,
-        "title": "ايس كريم",
-        "desc": "ايس كريم بالفانيليا",
-        "price": 90,
-        "image": "images/dish1.jpeg"
-      },
-            {
-        "id": 3,
-        "title": "ايس كريم",
-        "desc": "ايس كريم بالفانيليا",
-        "price": 90,
-        "image": "images/dish1.jpeg"
-      },
-            {
-        "id": 3,
-        "title": "ايس كريم",
-        "desc": "ايس كريم بالفانيليا",
-        "price": 90,
+      }
+    ],
+        "desserts5": [
+      {
+        "id": 6,
+        "title": "كيك",
+        "desc": "كيك بالفراولة",
+        "price": 100,
         "image": "images/dish1.jpeg"
       }
     ]
