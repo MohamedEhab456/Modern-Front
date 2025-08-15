@@ -8,7 +8,8 @@
     { "key": "foods", "label": "ماكولات" },
     { "key": "desserts1", "label": "حلويات" },
     { "key": "desserts1", "label": "حلويات" },
-    { "key": "desserts1", "label": "حلويات" }
+    { "key": "desserts1", "label": "حلويات" },
+        { "key": "offers", "label": "حلويات" }
 
   ],
   "products": {
@@ -19,17 +20,89 @@
         "desc": "مشروب صودا",
         "price": 90,
         "oldPrice": 120,
-        "image": "images/dish1.jpeg"
+        "image": "images/3813_main.avif"
+      },
+            {
+        "id": 2,
+        "title": "موهيتو",
+        "desc": "مهيتو بلو لاجن",
+        "price": 90,
+        "oldPrice": 120,
+        "image": "images/503A.webp"
+      },
+            {
+        "id": 3,
+        "title": "موهيتو",
+        "desc": "مهيتو ريد فرواله ",
+        "price": 90,
+        "oldPrice": 120,
+        "image": "images/أحمر.webp"
+      },
+            {
+        "id": 4,
+        "title": "موهيتو",
+        "desc": "مهيتو بلو لاجن",
+        "price": 90,
+        "oldPrice": 120,
+        "image": "images/موهيتو-ريدبول.webp"
+      },
+            {
+        "id": 5,
+        "title": "ريد بول",
+        "desc": "مهيتو بلو لاجن",
+        "price": 90,
+        "oldPrice": 120,
+        "image": "images/218919_main.jpg"
+      },
+            {
+        "id": 2,
+        "title": "prime",
+        "desc": "prime peach",
+        "price": 90,
+        "oldPrice": 120,
+        "image": "images/slGfaNNu6wituEv23SIZfJjunfy7Ux6V5K2HeNvE.webp"
+      },
+            {
+        "id": 2,
+        "title": "موهيتو",
+        "desc": "مهيتو بلو لاجن",
+        "price": 90,
+        "oldPrice": 120,
+        "image": "images/621886_main.avif"
+      },
+            {
+        "id": 2,
+        "title": "موهيتو",
+        "desc": "مهيتو بلو لاجن",
+        "price": 90,
+        "oldPrice": 120,
+        "image": "images/413887_main.avif"
       }
     ],
     "foods": [
       {
         "id": 2,
-        "title": "بيتزا",
+        "title": "حوواشي",
         "desc": "بيتزا بالخضار والجبنة",
         "price": 90,
         "oldPrice": 120,
+        "image": "images/ramadanrecipe_recipe_1126_80b8cf3bea-583b-49a3-94ea-02e24393a9cf.jpg"
+      },
+      {
+        "id": 3,
+        "title": "مكرونه",
+        "desc": " سباكتي ب صوص ابيض",
+        "price": 90,
+        "oldPrice": 120,
         "image": "images/dish1.jpeg"
+      },
+      {
+        "id": 3,
+        "title": "مكرونه سباكتي",
+        "desc": "رز ب لحمه",
+        "price": 90,
+        "oldPrice": 120,
+        "image": "images/طريقة-عمل-المكرونة-الاسباجتى.webp"
       }
     ],
     "desserts1": [
@@ -79,12 +152,14 @@
     ]
   },
   "contact": {
-    "phone": "+201063219650",
+    "phone": "+20106319650",
     "address": "مدينه نصر, شارع اباظه"
   },
   "social": {
     "facebook": "https://facebook.com/yourpage",
-    "instagram": "https://instagram.com/yourpage"
+    "instagram": "https://instagram.com/yourpage",
+    "whatsapp": "https://wa.me/123456789",
+    "tiktok": "https://tiktok.com/@yourpage"
   }
 }
 

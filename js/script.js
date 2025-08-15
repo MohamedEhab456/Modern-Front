@@ -121,25 +121,22 @@ function handleFilterClick(e) {
 
     let filter = e.target.dataset.filter;
     renderMenuItems(allProducts[filter] || []);
+
+    // اجلب اسم القسم الحالي وضعه في العنوان
+    const section = allSections.find((sec) => sec.key === filter);
+    if (section) setCategoryTitle(section.label);
   }
 }
 
 /*Section Contant UsFunction */
 
-function renderContact(contact) {
-  document.getElementById("contact-phone").textContent = contact.phone;
-  document.getElementById("contact-address").textContent = contact.address;
-}
-
 fetch("proudect.json")
   .then((res) => res.json())
   .then((data) => {
-    setRestaurantName(data.title, data.logo); // مرر رابط اللوجو لو موجود
-    updateCartIcon(); // ← هنا بعد رسم الأيقونة مباشرة
-
+    setRestaurantName(data.title, data.logo);
+    updateCartIcon();
     allSections = data.sections;
     allProducts = data.products;
-
     renderMenuFilters(allSections);
 
     if (allSections.length > 0) {
@@ -151,8 +148,12 @@ fetch("proudect.json")
       .querySelector(".menu-filters")
       .addEventListener("click", handleFilterClick);
 
-    renderContact(data.contact);
-    renderFooter(data);
+    // أضف هنا بعد ملء allSections
+    setCategoryTitle(allSections[0].label);
+
+    // أضف هذا السطر لإظهار العنوان في الفوتر
+    const footerTitle = document.getElementById("footer-title");
+    if (footerTitle) footerTitle.textContent = data.title;
   });
 
 /* تشغيل السله */
@@ -169,35 +170,43 @@ function updateCartIcon() {
 
 function renderCart() {
   let cartItems = document.getElementById("cartItems");
+  let clearCartBtn = document.getElementById("clearCart");
+  let checkoutBtn = document.getElementById("checkout");
+  let cartTotalSpan = document.getElementById("cartTotal");
+
   cartItems.innerHTML = "";
 
-  cart.forEach((item) => {
-    cartItems.innerHTML += `
-      <div class="cart-item" data-id="${item.id}">
-        
-      <div class="cart-item-box">
-
-              <div class="cart-item-actions">
-          <span class="cart-item-price">${item.price * item.qty} EG</span>
-          <button class="quantity-btn" data-action="decrease">-</button>
-          <span class="number">${item.qty}</span>
-          <button class="quantity-btn" data-action="increase">+</button>
+  if (cart.length === 0) {
+    cartItems.innerHTML =
+      '<p style="text-align:center;color:#b9af9f;font-size:18px;margin:30px 0;">السلة فارغة</p>';
+    if (clearCartBtn) clearCartBtn.style.display = "none";
+    if (checkoutBtn) checkoutBtn.style.display = "block";
+    if (cartTotalSpan) cartTotalSpan.textContent = "0 EG";
+  } else {
+    cart.forEach((item) => {
+      cartItems.innerHTML += `
+        <div class="cart-item" data-id="${item.id}">
+          <div class="cart-item-box">
+            <div class="cart-item-actions">
+              <span class="cart-item-price">${item.price * item.qty} EG</span>
+              <button class="quantity-btn" data-action="decrease">-</button>
+              <span class="number">${item.qty}</span>
+              <button class="quantity-btn" data-action="increase">+</button>
+            </div>
+            <div class="cart-item-info">
+              <h4>${item.title}</h4>
+              <p>${item.desc}</p>
+            </div>
+          </div>
+          <span class="close remove-item" title="حذف المنتج">×</span>
         </div>
-
-        <div class="cart-item-info">
-          <h4>${item.title}</h4>
-          <p>${item.desc}</p>
-        </div>
-
-      </div>
-        
-
-        <span class="close remove-item" title="حذف المنتج">×</span>
-      </div>
-    `;
-  });
+      `;
+    });
+    if (clearCartBtn) clearCartBtn.style.display = "block";
+    if (checkoutBtn) checkoutBtn.style.display = "block";
+    updateCartTotal();
+  }
   updateCartIcon();
-  updateCartTotal();
 }
 
 function updateCartTotal() {
@@ -265,10 +274,6 @@ document.querySelector(".cart-icon").onclick = () => {
   const modalContent = modal.querySelector(".modal-content");
   modal.style.display = "block";
   // إزالة الكلاسات القديمة أولاً
-  modalContent.classList.remove("animate__animated", "animate__zoomIn");
-  // إعادة تفعيل الأنيميشن (إعادة الرسم)
-  void modalContent.offsetWidth;
-  modalContent.classList.add("animate__animated", "animate__zoomIn");
 };
 
 document.querySelector(".close").onclick = () => {
@@ -367,14 +372,6 @@ function showAddToCartMessage(productName) {
   }, 2000);
 }
 
-function renderFooter(data) {
-  document.getElementById("footer-title").textContent = data.title;
-  document.getElementById("footer-facebook").href =
-    data.social?.facebook || "#";
-  document.getElementById("footer-instagram").href =
-    data.social?.instagram || "#";
-}
-
 // Scroll On Top
 
 const scrollBtn = document.getElementById("scroll-to-top");
@@ -412,3 +409,107 @@ scrollBtn.addEventListener("click", function () {
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("cartModal").style.display = "none";
 });
+
+// تحسين تحميل روابط التواصل الاجتماعي
+function loadSocialLinks() {
+  fetch("proudect.json")
+    .then((res) => res.json())
+    .then((data) => {
+      const social = data.social || {};
+      // لاحظ هنا: نبحث عن العنصر بواسطة الكلاس وليس id
+      const socialLinksDiv = document.querySelector(".social-links");
+      if (!socialLinksDiv) return;
+
+      const icons = {
+        facebook: "fab fa-facebook-f",
+        instagram: "fab fa-instagram",
+        twitter: "fab fa-twitter",
+        whatsapp: "fab fa-whatsapp",
+        tiktok: "fab fa-tiktok",
+        youtube: "fab fa-youtube",
+        telegram: "fab fa-telegram-plane",
+        snapchat: "fab fa-snapchat-ghost",
+        linkedin: "fab fa-linkedin-in",
+      };
+
+      let html = "";
+      Object.keys(social).forEach((key) => {
+        if (social[key] && icons[key]) {
+          html += `<a href="${social[key]}" target="_blank"><i class="${icons[key]}"></i></a>`;
+        }
+      });
+
+      socialLinksDiv.innerHTML = html;
+    });
+}
+
+document.addEventListener("DOMContentLoaded", loadSocialLinks);
+
+function loadContactInfo() {
+  fetch("proudect.json")
+    .then((res) => res.json())
+    .then((data) => {
+      const contactDiv = document.getElementById("contact-content");
+      if (!contactDiv) return;
+
+      let html = "";
+
+      // الهاتف
+      if (data.contact && data.contact.phone) {
+        html += `
+          <div class="contact-item">
+            <div>
+              <h3>الهاتف</h3>
+              <p>${data.contact.phone}</p>
+            </div>
+            <a href="tel:${data.contact.phone}" target="_blank">
+              <i class="fas fa-phone"></i>
+            </a>
+          </div>
+        `;
+      }
+
+      // العنوان
+      if (data.contact && data.contact.address) {
+        html += `
+          <div class="contact-item">
+            <div>
+              <h3>العنوان</h3>
+              <p>${data.contact.address}</p>
+            </div>
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+        `;
+      }
+
+      contactDiv.innerHTML = html;
+    });
+}
+
+document.addEventListener("DOMContentLoaded", loadContactInfo);
+
+// البحث في المنتجات داخل القسم الحالي
+document
+  .getElementById("product-search")
+  .addEventListener("input", function () {
+    const searchValue = this.value.trim().toLowerCase();
+    // معرفة القسم الحالي
+    const activeBtn = document.querySelector(".filter-btn.active");
+    if (!activeBtn) return;
+    const currentSection = activeBtn.dataset.filter;
+    const items = allProducts[currentSection] || [];
+    // فلترة المنتجات حسب البحث
+    const filtered = items.filter(
+      (item) =>
+        item.title.toLowerCase().includes(searchValue) ||
+        (item.desc && item.desc.toLowerCase().includes(searchValue))
+    );
+    renderMenuItems(filtered);
+  });
+
+function setCategoryTitle(label) {
+  const title = document.getElementById("category-title");
+  if (title) title.textContent = label;
+}
+
+// عند تغيير القسم (مثلاً في دالة onCategoryChange أو عند الضغط على زر الفلتر)

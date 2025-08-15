@@ -10,7 +10,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-theme="dark">
 <!--Header-->
 <header class="header" id="myHeader">
     <nav class="navbar">
@@ -31,6 +31,7 @@
             </div>
 
 
+            
             <div class="modal-body">
                 <div id="cartItems"> <!-- الطلبات في السله --> </div>
                 <div class="cart-total">
@@ -55,12 +56,17 @@
 <section id="menu" class="menu-section">
     <div class="container">
 
-        <div class="section-header">
+        <div class="section-header title-desgin">
             <h2>Menu</h2>
         </div>
 
         <div class="menu-filters"></div>
+        <div class="search-bar">
+        <input type="text" id="product-search" placeholder="Search" autocomplete="off">
+        <span class="search-icon"><i class="fas fa-search"></i></span>
+    </div>
         
+        <h2 id="category-title" class="category-title title-desgin"></h2>
         <div class="menu-grid"><!--Dishes--></div>
 
     </div>
@@ -69,28 +75,11 @@
     <!--Contact us-->
 <section id="contact" class="contact-section">
 <div class="container">
-            <div class="section-header">
+            <div class="section-header title-desgin">
                 <h2>Contact Us</h2>
             </div>
             
-            <div class="contact-content">
-
-                    <div class="contact-item loading loaded">
-                        <div>
-                            <h3>Phone</h3>
-                            <p id="contact-phone"></p>
-                        </div>
-                        <i class="fas fa-phone"></i>                        
-                    </div>
-                    <div class="contact-item loading loaded">
-                        <div>
-                            <h3>Address</h3>
-                            <p id="contact-address"></p>
-                        </div>
-                        <i class="fas fa-map-marker-alt"></i>                        
-                    </div>
-
-            </div>
+            <div id="contact-content"></div>
         </div>
 </section>
 
@@ -101,8 +90,7 @@
             <div class="footer-section">
                 <h3 id="footer-title"></h3>
                 <div class="social-links">
-                    <a id="footer-facebook" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a id="footer-instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+
                 </div>
             </div>
         </div>
@@ -127,3 +115,8 @@
 <script src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
 </body>
 </html>
+
+
+
+
+
