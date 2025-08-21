@@ -4,18 +4,18 @@
   "sections": [
 
 
-    { "key": "drinks", "label": "المشروبات" },
+    { "key": "drinks", "label": " fff f f f  f f ffff   الساخنه المشروبات" },
     { "key": "foods", "label": "ماكولات" },
     { "key": "desserts1", "label": "حلويات" },
     { "key": "desserts1", "label": "حلويات" },
     { "key": "desserts1", "label": "حلويات" },
-        { "key": "offers", "label": "حلويات" }
+        { "key": "offers", "label": "العروض" }
 
   ],
   "products": {
     "drinks": [
       {
-        "id": 1,
+        "id": 101,
         "title": "ببسي",
         "desc": "مشروب صودا",
         "price": 90,
@@ -23,7 +23,7 @@
         "image": "images/3813_main.avif"
       },
             {
-        "id": 2,
+        "id": 102,
         "title": "موهيتو",
         "desc": "مهيتو بلو لاجن",
         "price": 90,
@@ -31,7 +31,7 @@
         "image": "images/503A.webp"
       },
             {
-        "id": 3,
+        "id": 103,
         "title": "موهيتو",
         "desc": "مهيتو ريد فرواله ",
         "price": 90,
@@ -39,7 +39,7 @@
         "image": "images/أحمر.webp"
       },
             {
-        "id": 4,
+        "id": 104,
         "title": "موهيتو",
         "desc": "مهيتو بلو لاجن",
         "price": 90,
@@ -47,7 +47,7 @@
         "image": "images/موهيتو-ريدبول.webp"
       },
             {
-        "id": 5,
+        "id": 105,
         "title": "ريد بول",
         "desc": "مهيتو بلو لاجن",
         "price": 90,
@@ -55,7 +55,7 @@
         "image": "images/218919_main.jpg"
       },
             {
-        "id": 2,
+        "id": 107,
         "title": "prime",
         "desc": "prime peach",
         "price": 90,
@@ -63,7 +63,7 @@
         "image": "images/slGfaNNu6wituEv23SIZfJjunfy7Ux6V5K2HeNvE.webp"
       },
             {
-        "id": 2,
+        "id": 110,
         "title": "موهيتو",
         "desc": "مهيتو بلو لاجن",
         "price": 90,
@@ -71,7 +71,7 @@
         "image": "images/621886_main.avif"
       },
             {
-        "id": 2,
+        "id": 109,
         "title": "موهيتو",
         "desc": "مهيتو بلو لاجن",
         "price": 90,
@@ -81,7 +81,7 @@
     ],
     "foods": [
       {
-        "id": 2,
+        "id": 201,
         "title": "حوواشي",
         "desc": "بيتزا بالخضار والجبنة",
         "price": 90,
@@ -89,15 +89,15 @@
         "image": "images/ramadanrecipe_recipe_1126_80b8cf3bea-583b-49a3-94ea-02e24393a9cf.jpg"
       },
       {
-        "id": 3,
+        "id": 202,
         "title": "مكرونه",
-        "desc": " سباكتي ب صوص ابيض",
+        "desc": "   ولكن بدون صوص احمر اخفر اعت اعت ىاع تخه تعغ +لل +بس+ +لبب وصوص الرنشبببببببببببببب بببببببببببب بببببببببببب ببببببببببببب ببببببببب بببببببب ببببببببببببب بببببببببب ببببببببب ببببببببببب الالماني الفاخر + 2 ببسي + او مشروب غازي حامل للرطوبه الجويه الفاخره + سباكتي ب صوص ابيض",
         "price": 90,
         "oldPrice": 120,
         "image": "images/dish1.jpeg"
       },
       {
-        "id": 3,
+        "id": 203,
         "title": "مكرونه سباكتي",
         "desc": "رز ب لحمه",
         "price": 90,
@@ -107,9 +107,9 @@
     ],
     "desserts1": [
       {
-        "id": 3,
+        "id": 301,
         "title": "ايس كريم فانيليا",
-        "desc": "ايس كريم بالفانيليا",
+        "desc": "ايس كرتلل لللللللللل لللل للللل لللليم بالف لتتتتتتت تللللللل لللللللل لتتتتتتت تتتتتتتتت تتتتتتتت تتتتتتت تتانيليا",
         "price": 90,
         "image": "images/dish1.jpeg"
       }

@@ -82,6 +82,11 @@ function renderMenuItems(items) {
   grid.innerHTML = "";
 
   items.forEach((item) => {
+    /*=============== NEW ============= */
+    let desc = item.desc || "";
+    /*=============== E NEW ============= */
+
+    /* let showReadMore = desc.length > 50; // عدّل الرقم حسب ما تريد*/
     grid.innerHTML += `
       <div class="menu-item" data-id="${item.id}" data-category="${
       item.category
@@ -99,7 +104,9 @@ function renderMenuItems(items) {
         </div>
         <div class="menu-item-content">
           <h3>${item.title}</h3>
-          <p>${item.desc}</p>
+<!--=========== NEW =========-->
+          <p>${desc}</p>
+<!--=========== E NEW =========-->
           <button class="add-to-cart-btn" data-idx="${
             item.id
           }">أضف إلى السلة</button>
@@ -167,6 +174,46 @@ function updateCartIcon() {
     <span class="cart-count">${cartCount}</span>
   `;
 }
+/*=============== NEW ============= */
+
+// Make the entire description area clickable
+function setupReadMoreListeners() {
+  document.querySelectorAll(".cart-item-info").forEach((infoBox) => {
+    // Remove any existing event listeners to prevent duplicates
+    infoBox.removeEventListener("click", handleDescriptionClick);
+    // Add the new event listener
+    infoBox.addEventListener("click", handleDescriptionClick);
+  });
+}
+
+function handleDescriptionClick(e) {
+  // Find the read-more button or the description text that was clicked
+  const readMoreBtn =
+    e.target.closest(".read-more") ||
+    (e.target.closest("p.desc") && e.currentTarget.querySelector(".read-more"));
+
+  if (readMoreBtn || e.target.classList.contains("desc")) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const infoBox = e.currentTarget;
+    const descElement = infoBox.querySelector("p.desc");
+    if (!descElement) return;
+
+    // Toggle the expanded class
+    const isExpanded = descElement.classList.toggle("expanded");
+
+    // Update the button text if it exists
+    const readMoreBtn = infoBox.querySelector(".read-more");
+    if (readMoreBtn) {
+      readMoreBtn.textContent = isExpanded ? "اقرأ أقل" : "... اقرأ المزيد";
+    }
+
+    // Force a reflow to ensure the transition works
+    void descElement.offsetWidth;
+  }
+}
+/*=============== E NEW ============= */
 
 function renderCart() {
   let cartItems = document.getElementById("cartItems");
@@ -184,18 +231,40 @@ function renderCart() {
     if (cartTotalSpan) cartTotalSpan.textContent = "0 EG";
   } else {
     cart.forEach((item) => {
+      /*=============== NEW ============= */
+
+      let desc = item.desc || "";
+      let showReadMore = desc.length > 50; // Adjust this number as needed
+      /*=============== E NEW ============= */
+
       cartItems.innerHTML += `
         <div class="cart-item" data-id="${item.id}">
           <div class="cart-item-box">
             <div class="cart-item-actions">
+
               <span class="cart-item-price">${item.price * item.qty} EG</span>
+
+<!--=========== NEW =========-->
+              <div class="casher">
+
               <button class="quantity-btn" data-action="decrease">-</button>
               <span class="number">${item.qty}</span>
-              <button class="quantity-btn" data-action="increase">+</button>
+              <button class="quantity-btn" data-action="increase">+</button>    
+              </div>
             </div>
+<!--=========== E NEW =========-->
+<!--=========== NEW =========-->
             <div class="cart-item-info">
               <h4>${item.title}</h4>
-              <p>${item.desc}</p>
+
+              <p class="desc">${desc}</p>
+              ${
+                showReadMore
+                  ? '<span class="read-more">... اقرأ المزيد</span>'
+                  : ""
+              }
+<!--=========== E NEW =========-->
+
             </div>
           </div>
           <span class="close remove-item" title="حذف المنتج">×</span>
@@ -207,6 +276,11 @@ function renderCart() {
     updateCartTotal();
   }
   updateCartIcon();
+  /*=============== NEW ============= */
+
+  // Set up the read more listeners after rendering the cart
+  setupReadMoreListeners();
+  /*=============== E NEW ============= */
 }
 
 function updateCartTotal() {
@@ -246,7 +320,6 @@ document.getElementById("cartItems").addEventListener("click", function (e) {
   if (!parent) return;
   let id = parent.dataset.id;
   let item = cart.find((i) => i.id == id);
-
   // حذف المنتج عند الضغط على ×
   if (e.target.classList.contains("remove-item")) {
     cart = cart.filter((i) => i.id != id);
@@ -512,4 +585,8 @@ function setCategoryTitle(label) {
   if (title) title.textContent = label;
 }
 
-// عند تغيير القسم (مثلاً في دالة onCategoryChange أو عند الضغط على زر الفلتر)
+// Initial setup of read more listeners when the script loads
+/*=============== NEW ============= */
+
+document.addEventListener("DOMContentLoaded", setupReadMoreListeners);
+/*=============== E NEW ============= */
