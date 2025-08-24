@@ -82,15 +82,19 @@ function renderMenuItems(items) {
   grid.innerHTML = "";
 
   items.forEach((item) => {
-    /*=============== NEW ============= */
     let desc = item.desc || "";
-    /*=============== E NEW ============= */
 
-    /* let showReadMore = desc.length > 50; // عدّل الرقم حسب ما تريد*/
+    /*===============NEW========================================*/
     grid.innerHTML += `
-      <div class="menu-item" data-id="${item.id}" data-category="${
-      item.category
-    }">
+      <div class="menu-item"
+        data-id="${item.id}"
+        data-category="${item.category}"
+        data-name="${item.title.replace(/"/g, "&quot;")}"
+        data-price="${item.price}"
+        data-description="${desc.replace(/"/g, "&quot;")}"
+        data-image="${item.image}">
+    <!--==============END===================-->
+
         <div class="menu-item-image">
           <img src="${item.image}">
           <div class="price-tag">
@@ -104,9 +108,12 @@ function renderMenuItems(items) {
         </div>
         <div class="menu-item-content">
           <h3>${item.title}</h3>
-<!--=========== NEW =========-->
           <p>${desc}</p>
-<!--=========== E NEW =========-->
+
+    <!--==============NEW===================-->
+          <span class="more-details">المزيد من التفاصيل</span>
+    <!--==============END===================-->
+
           <button class="add-to-cart-btn" data-idx="${
             item.id
           }">أضف إلى السلة</button>
@@ -114,6 +121,14 @@ function renderMenuItems(items) {
       </div>
     `;
   });
+
+  /*===============NEW========================================*/
+  if (items.length === 1) {
+    grid.classList.add("single-item");
+  } else {
+    grid.classList.remove("single-item");
+  }
+  /*===============E NEW========================================*/
 }
 
 /*Section Save Menu In Catgory Function */
@@ -590,3 +605,83 @@ function setCategoryTitle(label) {
 
 document.addEventListener("DOMContentLoaded", setupReadMoreListeners);
 /*=============== E NEW ============= */
+
+/*===================================== NEW ========================================================= */
+
+document.querySelector(".menu-grid").addEventListener("click", function (e) {
+  const menuItem = e.target.closest(".menu-item");
+  if (!menuItem || e.target.closest(".add-to-cart-btn")) return;
+
+  const modal = document.querySelector(".product-modal");
+  const modalImg = document.querySelector(".product-modal-img");
+  const modalName = document.querySelector(".modal-Product-Name");
+  const modalPrice = document.querySelector(".modal-Product-Price");
+  const modalOldPrice = document.querySelector(".modal-Product-OldPrice");
+  const modalDesc = document.querySelector(".modal-Product-Description");
+
+  const name = menuItem.getAttribute("data-name");
+  const price = menuItem.getAttribute("data-price");
+  const desc = menuItem.getAttribute("data-description");
+  const img = menuItem.getAttribute("data-image");
+  // جلب السعر القديم من العنصر إن وجد
+  const oldPrice = menuItem.querySelector(".old-price")?.textContent || "";
+
+  modalImg.src = img;
+  modalName.textContent = name;
+  modalPrice.textContent = price + " EGP";
+  if (oldPrice) {
+    modalOldPrice.textContent = oldPrice;
+    modalOldPrice.style.display = "inline-block";
+  } else {
+    modalOldPrice.textContent = "";
+    modalOldPrice.style.display = "none";
+  }
+  modalDesc.textContent = desc;
+
+  modal.classList.add("show", "animate__animated", "animate__zoomIn");
+  modal.addEventListener("animationend", function handler() {
+    modal.classList.remove("animate__animated", "animate__zoomIn");
+    modal.removeEventListener("animationend", handler);
+  });
+});
+
+// إغلاق المودال
+document.querySelector(".product-modal-close").onclick = function () {
+  document.querySelector(".product-modal").classList.remove("show");
+};
+// إغلاق عند الضغط خارج المودال
+document.querySelector(".product-modal").onclick = function (e) {
+  if (e.target === this) this.classList.remove("show");
+};
+
+// إضافة المنتج من المودال إلى السلة
+document.querySelector(".add-to-cart-btn.product").onclick = function () {
+  const modal = document.querySelector(".product-modal");
+  const modalImg = document.querySelector(".product-modal-img");
+  const modalName = document.querySelector(".modal-Product-Name");
+  const modalPrice = document.querySelector(".modal-Product-Price");
+  const modalDesc = document.querySelector(".modal-Product-Description");
+
+  // استخراج البيانات من المودال
+  const name = modalName.textContent;
+  const desc = modalDesc.textContent;
+  const price = Number(modalPrice.textContent.replace(/[^\d]/g, ""));
+  const id = name + price; // أو استخدم أي طريقة مناسبة لتوليد id فريد
+
+  let found = cart.find((item) => item.id == id);
+
+  if (found) {
+    found.qty += 1;
+  } else {
+    cart.push({ id, title: name, desc, price, qty: 1 });
+  }
+  updateCartIcon();
+  renderCart();
+  updateCartTotal();
+  showAddToCartMessage(name);
+
+  // إغلاق المودال بعد الإضافة
+  modal.classList.remove("show");
+};
+
+/*===================================== E NEW ========================================================= */

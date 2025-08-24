@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body data-theme="dark">
+<body data-theme="">
 <!--Header-->
 <header class="header" id="myHeader">
     <nav class="navbar">
@@ -113,6 +113,23 @@
   <i class="fas fa-arrow-up"></i>
 </button>
 
+<!--==========================================NEW===================================================================-->
+<div class="product-modal" id="productModal">
+  <div class="product-modal-content">
+    <span class="product-modal-close">&times;</span>
+    <div class="product-modal-body">
+      <img class="product-modal-img" src="" alt="صورة المنتج" />
+      <h3 class="modal-Product-Name"></h3>
+      <div class="modal-Product-Prices">
+        <span class="modal-Product-OldPrice"></span>
+        <span class="modal-Product-Price"></span>
+      </div>
+      <p class="modal-Product-Description"></p>
+      <button class="add-to-cart-btn product">أضف إلى السلة</button>
+    </div>
+  </div>
+</div>
+<!--=======================================E NEW ===================================================================-->
 <script src="js/script.js"></script>
 <script src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
 </body>
