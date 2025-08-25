@@ -84,7 +84,6 @@ function renderMenuItems(items) {
   items.forEach((item) => {
     let desc = item.desc || "";
 
-    /*===============NEW========================================*/
     grid.innerHTML += `
       <div class="menu-item"
         data-id="${item.id}"
@@ -93,7 +92,7 @@ function renderMenuItems(items) {
         data-price="${item.price}"
         data-description="${desc.replace(/"/g, "&quot;")}"
         data-image="${item.image}">
-    <!--==============END===================-->
+
 
         <div class="menu-item-image">
           <img src="${item.image}">
@@ -110,25 +109,24 @@ function renderMenuItems(items) {
           <h3>${item.title}</h3>
           <p>${desc}</p>
 
-    <!--==============NEW===================-->
-          <span class="more-details">المزيد من التفاصيل</span>
-    <!--==============END===================-->
-
+    <div class="actions-row"> 
+         <span class="more-details">المزيد من التفاصيل</span>
+    
           <button class="add-to-cart-btn" data-idx="${
             item.id
           }">أضف إلى السلة</button>
+    </div>
+ 
         </div>
       </div>
     `;
   });
 
-  /*===============NEW========================================*/
   if (items.length === 1) {
     grid.classList.add("single-item");
   } else {
     grid.classList.remove("single-item");
   }
-  /*===============E NEW========================================*/
 }
 
 /*Section Save Menu In Catgory Function */
@@ -595,8 +593,6 @@ function setCategoryTitle(label) {
 
 document.addEventListener("DOMContentLoaded", setupReadMoreListeners);
 
-/*===================================== NEW ========================================================= */
-
 document.querySelector(".menu-grid").addEventListener("click", function (e) {
   const menuItem = e.target.closest(".menu-item");
   if (!menuItem || e.target.closest(".add-to-cart-btn")) return;
@@ -672,5 +668,3 @@ document.querySelector(".add-to-cart-btn.product").onclick = function () {
   // إغلاق المودال بعد الإضافة
   modal.classList.remove("show");
 };
-
-/*===================================== E NEW ========================================================= */
