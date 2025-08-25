@@ -189,7 +189,6 @@ function updateCartIcon() {
     <span class="cart-count">${cartCount}</span>
   `;
 }
-/*=============== NEW ============= */
 
 // Make the entire description area clickable
 function setupReadMoreListeners() {
@@ -228,7 +227,6 @@ function handleDescriptionClick(e) {
     void descElement.offsetWidth;
   }
 }
-/*=============== E NEW ============= */
 
 function renderCart() {
   let cartItems = document.getElementById("cartItems");
@@ -246,11 +244,8 @@ function renderCart() {
     if (cartTotalSpan) cartTotalSpan.textContent = "0 EG";
   } else {
     cart.forEach((item) => {
-      /*=============== NEW ============= */
-
       let desc = item.desc || "";
       let showReadMore = desc.length > 50; // Adjust this number as needed
-      /*=============== E NEW ============= */
 
       cartItems.innerHTML += `
         <div class="cart-item" data-id="${item.id}">
@@ -259,7 +254,7 @@ function renderCart() {
 
               <span class="cart-item-price">${item.price * item.qty} EG</span>
 
-<!--=========== NEW =========-->
+
               <div class="casher">
 
               <button class="quantity-btn" data-action="decrease">-</button>
@@ -267,8 +262,7 @@ function renderCart() {
               <button class="quantity-btn" data-action="increase">+</button>    
               </div>
             </div>
-<!--=========== E NEW =========-->
-<!--=========== NEW =========-->
+
             <div class="cart-item-info">
               <h4>${item.title}</h4>
 
@@ -278,7 +272,6 @@ function renderCart() {
                   ? '<span class="read-more">... اقرأ المزيد</span>'
                   : ""
               }
-<!--=========== E NEW =========-->
 
             </div>
           </div>
@@ -291,11 +284,9 @@ function renderCart() {
     updateCartTotal();
   }
   updateCartIcon();
-  /*=============== NEW ============= */
 
   // Set up the read more listeners after rendering the cart
   setupReadMoreListeners();
-  /*=============== E NEW ============= */
 }
 
 function updateCartTotal() {
@@ -601,10 +592,8 @@ function setCategoryTitle(label) {
 }
 
 // Initial setup of read more listeners when the script loads
-/*=============== NEW ============= */
 
 document.addEventListener("DOMContentLoaded", setupReadMoreListeners);
-/*=============== E NEW ============= */
 
 /*===================================== NEW ========================================================= */
 

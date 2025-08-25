@@ -478,7 +478,7 @@ background: var(--gradient);
     }
     
     @media (min-width: 1024px) {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         max-width: 1200px;
     }
 }
@@ -1591,3 +1591,8 @@ margin: 0;
       width: 81%;
 }
 
+@media (min-width: 1000px) {
+.menu-grid.single-item {
+      width: 34%;
+}
+}
