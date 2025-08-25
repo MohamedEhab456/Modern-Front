@@ -1567,11 +1567,11 @@ margin: 0;
 
 .more-details {
     color: var(--company-name-color);
-    font-size: 12px;
+    font-size: 11px;
     margin: 11px 0 0;
     background-color: transparent;
     border: 1px solid var(--border-gray-medium);
-    padding: 10px 20px;
+    padding: 7px 20px;
     border-radius: 18px;
     width: 89%;
 }
@@ -1582,7 +1582,11 @@ margin: 0;
     color: var(--black-low);
 }
 
-
+@media (max-width: 345px) {
+    .more-details {
+    font-size: 9px;
+    }
+}
 
 .menu-grid.single-item {
   display: flex !important;
